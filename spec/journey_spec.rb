@@ -26,12 +26,13 @@ subject(:journey2) { described_class.new }
   describe '#fare' do
     it 'successfully completes journey and sets fare' do
       journey.complete('Temple')
-      expect(journey.fare).to eq 1.00
-    end
-    it 'should add penalty fare' do
-      journey.penalty_fare
-      expect(journey.fare).to eq 7.00
+      expect(journey.fare).to eq Journey::BASE_FARE
     end
 
+    it 'adds penalty fare to fare' do
+      journey.penalty_fare
+      result = Journey::BASE_FARE + Journey::PENALTY_FARE
+      expect(journey.fare).to eq result
+    end
   end
 end
