@@ -7,11 +7,11 @@ subject(:journey2) { described_class.new }
 
   describe '#initialize' do
     it 'should initialize with entry_station' do
-      expect(journey.entry_station).to eq 'Bank'
+      expect(journey.instance_variable_get(:@entry_station)).to eq 'Bank'
     end
 
     it 'should initialize with an "unknown station" if no argument given' do
-      expect(journey2.entry_station).to eq 'Unknown station'
+      expect(journey2.instance_variable_get(:@entry_station)).to eq 'Unknown station'
     end
   end
 
@@ -19,7 +19,7 @@ subject(:journey2) { described_class.new }
 
     it 'should return the exit_station after completing a journey' do
       journey.complete('Temple')
-      expect(journey.exit_station).to eq 'Temple'
+      expect(journey.instance_variable_get(:@exit_station)).to eq 'Temple'
     end
   end
 
