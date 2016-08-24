@@ -31,12 +31,12 @@ describe Oystercard do
       expect {Oystercard.new 50, 100}.to raise_error msg
     end
 
-    it 'is initially not in a journey' do
-      expect(oystercard).not_to be_in_journey
-    end
-
     it 'has a minimum fare' do
       expect(oystercard.fare).to eq described_class::MINIMUM_FARE
+    end
+
+    it 'is initially not in a journey' do
+      expect(oystercard).not_to be_in_journey
     end
 
     it 'has an empty list of journeys by default' do
@@ -83,8 +83,25 @@ describe Oystercard do
       expect(oystercard.entry_station).to eq entry_station
     end
 
+    it 'should create a new journey and pass the start station to that journey' do
+      subject.top_up(5)
+      subject.touch_in(entry_station)
+      expect(Journey.new.start_station).to eq entry_station
+    end
+
+    it 'should inform the Journey if there was no previous exit station' do
+
+    end
 
   describe '#touch_out' do
+
+    it 'should inform the current journey about the exit station' do
+
+    end
+
+    it 'should create a new journey if there is no entry station' do
+
+    end
 
     it 'will be aware of journey status' do
     oystercard.top_up(1)
