@@ -1,7 +1,7 @@
 require_relative 'oystercard'
 
 class Journey
-  MINIMUM_FARE = 1
+  MINIMUM_FARE = 2
   PENALTY_FARE = 6
 
   attr_reader :entry_station, :journey, :exit_station
