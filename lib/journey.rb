@@ -9,7 +9,6 @@ class Journey
   def initialize(station = @station)
     @entry_station
     @exit_station
-    @finish
     @journey = {entry: 'start' , exit: 'end'}
   end
 
