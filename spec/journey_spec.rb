@@ -12,12 +12,13 @@ describe Journey do
       expect(journey.entry_station).to eq entry_station
     end
   end
-  describe '#finish' do
-    it 'saves an exit station' do
-      journey.finish(exit_station)
-      expect(journey.exit_station).to eq exit_station
-    end
-  end
+  # describe '#finish' do
+  #   it 'saves an exit station' do
+  #     journey.start(entry_station)
+  #     journey.finish(exit_station)
+  #     expect(journey.exit_station).to eq exit_station
+  #   end
+  # end
   describe '#complete?' do
     it 'checks if a journey is complete' do
       journey.start(entry_station)
@@ -34,6 +35,11 @@ describe Journey do
 
     it 'should charge penalty if the user did not previously touch in' do
       expect(journey.finish(exit_station)).to eq Journey::PENALTY_FARE
+    end
+
+    it 'should charge penalty if previously did not touch out' do
+      journey.start(entry_station)
+      expect(journey.start(entry_station)).to eq Journey::PENALTY_FARE
     end
   end
 end
