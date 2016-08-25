@@ -18,14 +18,17 @@ class Journey
 
   def start(station)
     @entry_station = station
+    @complete = false
   end
 
   def finish(station)
     @exit_station = station
+    @complete = true
   end
 
   def complete?
-    @entry_station != nil && @exit_station != nil
+    @complete
+    #@entry_station != nil && @exit_station != nil
   end
 
   def fare

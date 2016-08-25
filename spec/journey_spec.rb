@@ -1,5 +1,4 @@
 require 'journey'
-require 'oystercard'
 
 describe Journey do
 
@@ -27,15 +26,14 @@ describe Journey do
     end
   end
   describe '#fare' do
-    it 'should deduct minimum fare from a completed journey' do
+    it 'should return miniumum fare when journey complete' do
       journey.start(entry_station)
       journey.finish(exit_station)
       expect(journey.fare).to eq Journey::MINIMUM_FARE
     end
 
-    it 'should deduct minimum fare from a completed journey' do
-      journey.start(entry_station)
-      expect(journey.fare).to eq Journey::PENALTY_FARE
+    it 'should charge penalty if the user did not previously touch in' do
+      expect(journey.finish(exit_station)).to eq Journey::PENALTY_FARE
     end
   end
 end
