@@ -12,13 +12,7 @@ describe Journey do
       expect(journey.entry_station).to eq entry_station
     end
   end
-  # describe '#finish' do
-  #   it 'saves an exit station' do
-  #     journey.start(entry_station)
-  #     journey.finish(exit_station)
-  #     expect(journey.exit_station).to eq exit_station
-  #   end
-  # end
+
   describe '#complete?' do
     it 'checks if a journey is complete' do
       journey.start(entry_station)

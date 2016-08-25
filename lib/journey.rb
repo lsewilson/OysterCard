@@ -17,27 +17,17 @@ class Journey
   end
 
   def start(station)
-    #this method was working DRY and needs to be refactored!
-    if @complete == false
-      PENALTY_FARE
-    else
-      @complete = false
-      @entry_station = station
-    end
+    @entry_station = station
+    @complete == false ? PENALTY_FARE : @complete = false
   end
 
   def finish(station)
-    if complete.nil?
-      PENALTY_FARE
-    else
-      @exit_station = station
-      @complete = true
-    end
+    @exit_station = station
+    complete.nil? ? PENALTY_FARE : @complete = true
   end
 
   def complete?
     @complete
-    #@entry_station != nil && @exit_station != nil
   end
 
   def fare
