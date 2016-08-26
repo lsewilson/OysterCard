@@ -35,10 +35,6 @@ class Oystercard
     @entry_station = nil
   end
 
-  def new_journey
-    @current_journey = Journey.new
-  end
-
   private
 
   def full?

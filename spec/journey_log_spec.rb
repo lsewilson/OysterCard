@@ -10,7 +10,8 @@ describe JourneyLog do
 
   context '#start' do
     it 'should create a new journey' do
-      expect(log.start(entry_station)).to eq journey
+      allow(log.incomplete_journey).to receive(:finish)
+      expect(log.start(entry_station)).to eq [journey]
     end
   end
 
